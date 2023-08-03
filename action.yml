@@ -1,0 +1,43 @@
+name: "Run terrasec with sarif upload"
+description: "Run terrasec against terraform code base and upload the sarif output to the github repo"
+author: "Owen Rumney"
+
+inputs:
+  working_directory:
+    description: |
+      Directory to run the action on, from the repo root.
+      Default is . ( root of the repository)
+    default: "."
+    required: false
+  sarif_file:
+    description: The path to write the sarif report, defaults to terrasec.sarif
+    default: terrasec.sarif
+    required: false
+  tfvars_file:
+    description: The tfvars file to use for the scan
+    required: false
+  terrasec_version:
+    description: The version of terrasec to use for the scan, defaults to latest
+    default: latest
+    required: false
+  config_file:
+    description: The path to the config file. (eg. ./terrasec.yml)
+    required: false
+  terrasec_args:
+    description: |
+      Space seperated args specified here will be added during terrasec execution.
+      (eg. --verbose)
+    required: false
+  full_repo_scan:
+    description: Scan the entire repository for Terraform issues
+    required: false
+
+outputs:
+  terrasec-return-code:
+    description: "terrasec command return code"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+branding:
+  icon: "search"
+  color: "gray-dark"
