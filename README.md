@@ -28,7 +28,7 @@ jobs:
           persist-credentials: false
 
       - name: tfsecurity
-        uses: khulnasoft-labs/tfsecurity-sarif-action@v0.0.2
+        uses: khulnasoft-labs/tfsecurity-sarif-action@v1
         with:
           sarif_file: tfsecurity.sarif          
 
