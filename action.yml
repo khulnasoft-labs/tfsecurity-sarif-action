@@ -1,5 +1,5 @@
-name: "Run terrasec with sarif upload"
-description: "Run terrasec against terraform code base and upload the sarif output to the github repo"
+name: "Run tfsecurity with sarif upload"
+description: "Run tfsecurity against terraform code base and upload the sarif output to the github repo"
 author: "Owen Rumney"
 
 inputs:
@@ -10,22 +10,22 @@ inputs:
     default: "."
     required: false
   sarif_file:
-    description: The path to write the sarif report, defaults to terrasec.sarif
-    default: terrasec.sarif
+    description: The path to write the sarif report, defaults to tfsecurity.sarif
+    default: tfsecurity.sarif
     required: false
   tfvars_file:
     description: The tfvars file to use for the scan
     required: false
-  terrasec_version:
-    description: The version of terrasec to use for the scan, defaults to latest
+  tfsecurity_version:
+    description: The version of tfsecurity to use for the scan, defaults to latest
     default: latest
     required: false
   config_file:
-    description: The path to the config file. (eg. ./terrasec.yml)
+    description: The path to the config file. (eg. ./tfsecurity.yml)
     required: false
-  terrasec_args:
+  tfsecurity_args:
     description: |
-      Space seperated args specified here will be added during terrasec execution.
+      Space seperated args specified here will be added during tfsecurity execution.
       (eg. --verbose)
     required: false
   full_repo_scan:
@@ -33,8 +33,8 @@ inputs:
     required: false
 
 outputs:
-  terrasec-return-code:
-    description: "terrasec command return code"
+  tfsecurity-return-code:
+    description: "tfsecurity command return code"
 runs:
   using: "docker"
   image: "Dockerfile"
