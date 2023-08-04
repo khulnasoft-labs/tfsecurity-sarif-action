@@ -1,21 +1,21 @@
-# terrasec-sarif-action
+# tfsecurity-sarif-action
 
 ## Description
 
-This Github Action will run the terrasec sarif check then add the report to the repo for upload.
+This Github Action will run the tfsecurity sarif check then add the report to the repo for upload.
 
 Example usage
 
 ```yaml
-name: terrasec
+name: tfsecurity
 on:
   push:
     branches:
       - main
   pull_request:
 jobs:
-  terrasec:
-    name: terrasec sarif report
+  tfsecurity:
+    name: tfsecurity sarif report
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -27,16 +27,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: terrasec
-        uses: khulnasoft-labs/terrasec-sarif-action@v0.1.0
+      - name: tfsecurity
+        uses: khulnasoft-labs/tfsecurity-sarif-action@v0.1.0
         with:
-          sarif_file: terrasec.sarif          
+          sarif_file: tfsecurity.sarif          
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: terrasec.sarif         
+          sarif_file: tfsecurity.sarif         
 ```
 
 ## Optional inputs
@@ -44,10 +44,10 @@ There are a number of optional inputs that can be used in the `with:` block.
 
 **working_directory** - the directory to scan in, defaults to `.`, ie current working directory
 
-**terrasec_version** - the version of terrasec to use, defaults to `latest`
+**tfsecurity_version** - the version of tfsecurity to use, defaults to `latest`
 
-**terrasec_args** - the args for terrasec to use (space-separated)
+**tfsecurity_args** - the args for tfsecurity to use (space-separated)
 
-**config_file** - The path to the config file. (eg. ./terrasec.yml)
+**config_file** - The path to the config file. (eg. ./tfsecurity.yml)
 
 **full_repo_scan** - This is the equivalent of running `--force-all-dirs` and will ensure that a Terraform in the repo will be scanned
