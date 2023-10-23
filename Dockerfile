@@ -1,4 +1,4 @@
-FROM alpine:3.16.2
+FROM alpine:3.18.4
 
 RUN apk --no-cache --update add bash wget git mercurial
 
