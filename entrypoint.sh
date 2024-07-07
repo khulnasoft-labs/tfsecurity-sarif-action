@@ -15,9 +15,9 @@ if [[ -n "${INPUT_TFSECURITY_VERSION}" && "$INPUT_TFSECURITY_VERSION" != "latest
   TFSECURITY_VERSION="tags/${INPUT_TFSECURITY_VERSION}"
 fi
 
-# # Pull https://api.github.com/repos/khulnasoft-labs/tfsecurity/releases for the full list of releases. NOTE no trailing slash
-# wget --inet4-only -O - -q "$(wget --inet4-only -q https://api.github.com/repos/khulnasoft-labs/tfsecurity/releases/${TFSECURITY_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsecurity-linux-amd64" | head -n1)" > tfsecurity-linux-amd64
-# wget --inet4-only -O - -q "$(wget --inet4-only -q https://api.github.com/repos/khulnasoft-labs/tfsecurity/releases/${TFSECURITY_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsecurity_checksums.txt" | head -n1)" > tfsecurity.checksums
+# # Pull https://api.github.com/repos/khulnasoft/tfsecurity/releases for the full list of releases. NOTE no trailing slash
+# wget --inet4-only -O - -q "$(wget --inet4-only -q https://api.github.com/repos/khulnasoft/tfsecurity/releases/${TFSECURITY_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsecurity-linux-amd64" | head -n1)" > tfsecurity-linux-amd64
+# wget --inet4-only -O - -q "$(wget --inet4-only -q https://api.github.com/repos/khulnasoft/tfsecurity/releases/${TFSECURITY_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsecurity_checksums.txt" | head -n1)" > tfsecurity.checksums
 
 # # pipe out the checksum and validate
 # grep tfsecurity-linux-amd64 tfsecurity.checksums > tfsecurity-linux-amd64.checksum
